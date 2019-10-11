@@ -81,20 +81,11 @@ function App() {
             <Button 
               variant="contained" 
               color="primary"
-              aria-controls="action-menu" aria-haspopup="true" onClick={handleClick}
+              
             > 
               Hospital ({hospitalCnt.length} Zombies)
             </Button>
-            <Menu
-              id="action-menu"
-              anchorEl={anchorEl}
-              keepMounted
-              open={Boolean(anchorEl)}
-              onClose={handleClose}
-            >
-              <MenuItem onClick={handleClose}>List Zombies</MenuItem>
-              <MenuItem onClick={handleClose}>Move Zombie</MenuItem>
-            </Menu>
+           
           </Grid>
           <Typography component="div" style={{ backgroundColor: '#cfe8fc', height: '15vh' }}></Typography>
           <Grid container direction='row' justify='flex-end' alignItems='center'> 

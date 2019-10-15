@@ -14,9 +14,9 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import FormLabel from '@material-ui/core/FormLabel';
 
-const hospital = 'hospital';
-const school = 'school';
-const warehouse = 'warehouse'
+const hospital = 'Hospital';
+const school = 'School';
+const warehouse = 'Warehouse'
 
 let hospitalZombies = [
   101,
@@ -60,22 +60,7 @@ function App() {
   const [currentList, setCurrentList] = React.useState(null);
   const [currentZombie, setCurrentZombie] = React.useState(null);
 
-  const handleClick = event => {
-    console.log('handleClick')
-    console.log('event.target.id=' + event.target.id)
-    console.log('event.target=' + event.target)
-    console.log('event.target.dataset=' + event.target.dataset)
-    console.log('event.tartget.dataset.index=' + event.target.dataset.index)
-    console.log('event.currentTarget.dataset.index=' + event.currentTarget.dataset.index)
-    console.log('event.detail.index=' + event.detail.index)
-    console.log('event.detail=' + event.detail)
-    console.log(event)
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClick2 = (event, zombie) => {
-    console.log('handleClick2')
-    console.log('zombie=' + zombie)
+  const handleClick = (event, zombie) => {
     setAnchorEl(event.currentTarget);
     setCurrentZombie(zombie);
   };
@@ -85,10 +70,6 @@ function App() {
   };
 
   const zombieMove = (from, to) => {
-    console.log('zombieMove');
-    console.log(currentZombie)
-    console.log(from)
-    console.log(to)
     switch(from) {
       case hospital:
         hospitalZombies = hospitalZombies.filter(function(value, index, arr){
@@ -126,7 +107,7 @@ function App() {
     } else if (currentList === location) {
       setCurrentList(null);
     } else {
-      // point at a different location
+      // pointing at a different location
       // point to the current location
       setCurrentList(location)
     }
@@ -146,7 +127,7 @@ function App() {
               id={zombie.toString()}
               data-index={zombie.toString()}
               primary={'Zombie: ' + zombie} 
-              onClick={ (event) => handleClick2(event, zombie)} 
+              onClick={ (event) => handleClick(event, zombie)} 
               aria-controls="location-menu" aria-haspopup="true" />
             <Menu id="location-menu" 
               anchorEl={anchorEl} 
@@ -173,11 +154,11 @@ function App() {
     case hospital:
       list = hospitalZombies;
       break;
-    case warehouse:
-      list = warehouseZombies;
-      break;
     case school:
       list = schoolZombies;
+      break;
+    case warehouse:
+      list = warehouseZombies;
       break;
     default:
       list = null;
